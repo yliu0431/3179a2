@@ -9,7 +9,7 @@
   "layer": [
     {
       "data": {
-        "url": "",
+        "url": "https://raw.githubusercontent.com/yliu0431/3179a2/main/js/ne_110m.json",
         "format": {
           "type": "topojson",
           "feature": "ne_110m_admin_0_countries"
@@ -20,16 +20,10 @@
           "lookup": "properties.NAME",
           "from": {
             "data": {
-              "values": [
-                {"State": "New South Wales", "Population": 8469.6, "Change": 2},
-                {"State": "Victoria", "Population": 6959.2, "Change": 2.7},
-                {"State": "Queensland", "Population": 5560.5, "Change": 2.5},
-                {"State": "South Australia", "Population": 1873.8, "Change": 1.5},
-                {"State": "Western Australia", "Population": 2951.6, "Change": 3.1},
-                {"State": "Tasmania", "Population": 575.7, "Change": 0.4},
-                {"State": "Northern Territory", "Population": 254.3, "Change": 0.8},
-                {"State": "Australian Capital Territory", "Population": 472.8, "Change": 1.8}
-              ]
+              "url": "https://raw.githubusercontent.com/yliu0431/3179a2/refs/heads/main/data/population.csv",  
+              "format": {
+                "type": "csv"
+              }
             },
             "key": "State",
             "fields": ["Population", "Change"]
