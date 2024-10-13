@@ -1,0 +1,29 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Population change by state in Australia.",
+    "data": {
+      "url": "path-to-your-dataset.csv"
+    },
+    "mark": "bar",
+    "encoding": {
+      "x": {
+        "field": "State",
+        "type": "nominal",
+        "axis": {"labelAngle": 0},
+        "title": "State"
+      },
+      "y": {
+        "field": "Population",
+        "type": "quantitative",
+        "title": "Population (in millions)"
+      },
+      "tooltip": [
+        {"field": "State", "type": "nominal", "title": "State"},
+        {"field": "Population", "type": "quantitative", "title": "Population"},
+        {"field": "Change over previous year (%)", "type": "quantitative"}
+      ]
+    },
+    "width": 600,
+    "height": 400
+  }
+  
