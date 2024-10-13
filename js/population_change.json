@@ -2,7 +2,7 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "description": "Population change by state in Australia.",
     "data": {
-      "url": "path-to-your-dataset.csv"
+      "url": "https://raw.githubusercontent.com/yliu0431/3179a2/refs/heads/main/data/population.csv"
     },
     "mark": "bar",
     "encoding": {
