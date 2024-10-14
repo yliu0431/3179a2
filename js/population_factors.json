@@ -1,8 +1,8 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "description": "Stacked bar chart of population factors by Australian states",
+    "description": "Interactive stacked bar chart of population factors by Australian states",
     "data": {
-      "url": "", 
+      "url": "https://raw.githubusercontent.com/yliu0431/3179a2/refs/heads/main/data/Cleaned_Population_Growth_Data_by_State.csv",
       "format": {
         "type": "csv"
       }
@@ -11,9 +11,15 @@
       {
         "fold": ["NSW", "Vic.", "Qld", "SA", "WA", "Tas.", "NT", "ACT"],
         "as": ["State", "Value"]
+      },
+      {
+        "filter": "datum.Metric == 'Births' || datum.Metric == 'Deaths' || datum.Metric == 'Overseas arrivals' || datum.Metric == 'Overseas departures'"
       }
     ],
-    "mark": "bar",
+    "mark": {
+      "type": "bar",
+      "tooltip": true
+    },
     "encoding": {
       "x": {
         "field": "State",
@@ -29,6 +35,26 @@
         "field": "Metric",
         "type": "nominal",
         "title": "Metric"
+      },
+      "opacity": {
+        "condition": {
+          "selection": "highlight",
+          "value": 1
+        },
+        "value": 0.5
+      }
+    },
+    "selection": {
+      "highlight": {
+        "type": "single",
+        "on": "mouseover",
+        "empty": "all",
+        "fields": ["State", "Metric"]
+      },
+      "selectState": {
+        "type": "multi",
+        "fields": ["State"],
+        "bind": "legend"
       }
     }
   }

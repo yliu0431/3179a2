@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Population Visualization</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <header>
+    <h1>Population Visualization of Australian States</h1>
+  </header>
+  <p>A2test</p>
+
+  <div id="chart1" class="chart"></div>
+  <div id="chart2" class="chart"></div>
+
+  <script type="text/javascript">
+    vegaEmbed('#chart1', '../js/population_factors.json').catch(console.warn);
+
+    vegaEmbed('#chart2', '../js/population_change.json').catch(console.warn);
+  </script>
+</body>
+</html>

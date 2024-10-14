@@ -1,29 +1,23 @@
-{
+
+
+  
+  {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "description": "Population change by state in Australia.",
+    "description": "Scatter plot of Population vs. Population Change",
     "data": {
-      "url": "https://raw.githubusercontent.com/yliu0431/3179a2/refs/heads/main/data/population.csv"
+      "url": "https://raw.githubusercontent.com/yliu0431/3179a2/refs/heads/main/data/population.csv",
+      "format": {"type": "csv"}
     },
-    "mark": "bar",
+    "mark": "point",
     "encoding": {
-      "x": {
-        "field": "State",
-        "type": "nominal",
-        "axis": {"labelAngle": 0},
-        "title": "State"
-      },
-      "y": {
-        "field": "Population",
-        "type": "quantitative",
-        "title": "Population (in millions)"
-      },
+      "x": {"field": "Population", "type": "quantitative", "title": "Population (in thousands)"},
+      "y": {"field": "Change over previous year (%)", "type": "quantitative", "title": "Population Change (%)"},
+      "color": {"field": "State", "type": "nominal"},
       "tooltip": [
-        {"field": "State", "type": "nominal", "title": "State"},
-        {"field": "Population", "type": "quantitative", "title": "Population"},
+        {"field": "State", "type": "nominal"},
+        {"field": "Population", "type": "quantitative"},
         {"field": "Change over previous year (%)", "type": "quantitative"}
       ]
-    },
-    "width": 600,
-    "height": 400
+    }
   }
   
