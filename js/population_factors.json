@@ -1,61 +1,64 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "description": "Interactive stacked bar chart of population factors by Australian states",
-    "data": {
-      "url": "https://raw.githubusercontent.com/yliu0431/3179a2/refs/heads/main/data/Cleaned_Population_Growth_Data_by_State.csv",
-      "format": {
-        "type": "csv"
-      }
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Interactive stacked bar chart of population factors by Australian states",
+  "data": {
+    "url": "https://raw.githubusercontent.com/yliu0431/3179a2/refs/heads/main/data/Cleaned_Population_Growth_Data_by_State.csv",
+    "format": {
+      "type": "csv"
+    }
+  },
+  "transform": [
+    {
+      "fold": ["NSW", "Vic.", "Qld", "SA", "WA", "Tas.", "NT", "ACT"],
+      "as": ["State", "Value"]
     },
-    "transform": [
-      {
-        "fold": ["NSW", "Vic.", "Qld", "SA", "WA", "Tas.", "NT", "ACT"],
-        "as": ["State", "Value"]
-      },
-      {
-        "filter": "datum.Metric == 'Births' || datum.Metric == 'Deaths' || datum.Metric == 'Overseas arrivals' || datum.Metric == 'Overseas departures'"
-      }
-    ],
-    "mark": {
-      "type": "bar",
-      "tooltip": true
+    {
+      "calculate": "datum.Metric == 'Deaths' || datum.Metric == 'Overseas departures' ? -datum.Value : datum.Value",
+      "as": "AdjustedValue"
     },
-    "encoding": {
-      "x": {
-        "field": "State",
-        "type": "nominal",
-        "title": "State"
-      },
-      "y": {
-        "field": "Value",
-        "type": "quantitative",
-        "title": "Population Factor"
-      },
-      "color": {
-        "field": "Metric",
-        "type": "nominal",
-        "title": "Metric"
-      },
-      "opacity": {
-        "condition": {
-          "selection": "highlight",
-          "value": 1
-        },
-        "value": 0.5
-      }
+    {
+      "filter": "datum.Metric == 'Births' || datum.Metric == 'Deaths' || datum.Metric == 'Overseas arrivals' || datum.Metric == 'Overseas departures'"
+    }
+  ],
+  "mark": {
+    "type": "bar",
+    "tooltip": true
+  },
+  "encoding": {
+    "x": {
+      "field": "State",
+      "type": "nominal",
+      "title": "State"
     },
-    "selection": {
-      "highlight": {
-        "type": "single",
-        "on": "mouseover",
-        "empty": "all",
-        "fields": ["State", "Metric"]
+    "y": {
+      "field": "AdjustedValue",
+      "type": "quantitative",
+      "title": "Population Factor"
+    },
+    "color": {
+      "field": "Metric",
+      "type": "nominal",
+      "title": "Metric"
+    },
+    "opacity": {
+      "condition": {
+        "selection": "highlight",
+        "value": 1
       },
-      "selectState": {
-        "type": "multi",
-        "fields": ["State"],
-        "bind": "legend"
-      }
+      "value": 0.5
+    }
+  },
+  "selection": {
+    "highlight": {
+      "type": "single",
+      "on": "mouseover",
+      "empty": "all",
+      "fields": ["State", "Metric"]
+    },
+    "selectState": {
+      "type": "multi",
+      "fields": ["State"],
+      "bind": "legend"
     }
   }
-  
+}
