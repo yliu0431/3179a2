@@ -13,15 +13,57 @@
   <header>
     <h1>Population Visualization of Australian States</h1>
   </header>
-  <p>A2test</p>
+  
+  <!-- Add links to resources -->
+  <a href="https://github.com/yliu0431/3179a2">GitHub Repository for the Project</a>
+  <a href="#">Five Design Sheet</a>
+  
+  <!-- Storytelling Section -->
+  <section id="story">
+    <h2>Storytelling: Exploring Australia's Population Trends</h2>
+    <p>
+      Australia's population is constantly evolving, with different factors influencing growth in each state. 
+      This interactive visualization provides insights into how population changes across Australian states, highlighting the key drivers of growth, 
+      including natural population increase (births minus deaths) and net overseas migration.
+    </p>
+  </section>
+  
+  <!-- Storytelling for Map -->
+  <section id="map_story">
+    <h3>Population Distribution Across Australian States</h3>
+    <p>
+        The map below highlights the population change across Australian states. States with higher rates of population growth are shaded darker.
+      Use the slider to filter states based on their population size. This provides a geographical overview of population concentration.
+    </p>
+    <div id="map" class="chart"></div>
+  </section>
 
-  <div id="map" class="chart"></div>
-  <div id="population_change" class="chart"></div>
-  <div id="population_factors" class="chart"></div> 
+  <!-- Storytelling for Bubble Chart -->
+  <section id="population_vs_migration_story">
+    <h3>Population vs. Net Overseas Migration</h3>
+    <p>
+      This bubble chart explores the relationship between the population size of each state and the amount of net overseas migration they experience. 
+      Larger bubbles represent states with larger populations, and the position of the bubbles indicates their net migration levels. 
+      You can filter states by population using the slider or select specific states to highlight their details.
+    </p>
+    <div id="population_vs_net_overseas_migration" class="chart"></div>
+  </section>
 
+  <!-- Storytelling for Population Factors -->
+  <section id="population_factors_story">
+    <h3>Population Growth Factors: Births, Deaths, and Migration</h3>
+    <p>
+      This stacked bar chart breaks down the key factors that contribute to population growth in each state. 
+      It shows the number of births, deaths, overseas arrivals, and overseas departures. 
+      Understanding these factors helps in assessing how both natural population changes and migration affect the overall population of each state.
+    </p>
+    <div id="population_factors" class="chart"></div>
+  </section>
+
+  <!-- Embed the Vega-Lite visualizations -->
   <script type="text/javascript">
     vegaEmbed('#map', 'js/map.json').catch(console.warn);
-    vegaEmbed('#population_change', 'js/population_change.json').catch(console.warn);
+    vegaEmbed('#population_vs_net_overseas_migration', 'js/population_vs_net_overseas_migration.json').catch(console.warn);
     vegaEmbed('#population_factors', 'js/population_factors.json').catch(console.warn);
   </script>
 </body>

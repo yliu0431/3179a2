@@ -1,0 +1,95 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Bubble chart of Population Size vs. Net Overseas Migration",
+  "data": {
+    "values": [
+      {"State": "New South Wales", "Population": 8469.6, "Net Migration": 168148.0},
+      {"State": "Victoria", "Population": 6959.2, "Net Migration": 151740.0},
+      {"State": "Queensland", "Population": 5560.5, "Net Migration": 82794.0},
+      {"State": "South Australia", "Population": 1873.8, "Net Migration": 26048.0},
+      {"State": "Western Australia", "Population": 2951.6, "Net Migration": 64902.0},
+      {"State": "Tasmania", "Population": 575.7, "Net Migration": 4704.0},
+      {"State": "Northern Territory", "Population": 254.3, "Net Migration": 3920.0},
+      {"State": "Australian Capital Territory", "Population": 472.8, "Net Migration": 7468.0}
+    ]
+  },
+  "params": [
+    {
+      "name": "populationSlider",
+      "value": 0,
+      "bind": {
+        "input": "range",
+        "min": 0,
+        "max": 9000,
+        "step": 500,
+        "name": "Minimum Population: "
+      }
+    },
+    {
+      "name": "State_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "New South Wales",
+          "Victoria",
+          "Queensland",
+          "South Australia",
+          "Western Australia",
+          "Tasmania",
+          "Northern Territory",
+          "Australian Capital Territory"
+        ],
+        "labels": [
+          "Show All",
+          "New South Wales",
+          "Victoria",
+          "Queensland",
+          "South Australia",
+          "Western Australia",
+          "Tasmania",
+          "Northern Territory",
+          "Australian Capital Territory"
+        ],
+        "name": "State Selection: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "datum.Population >= populationSlider"
+    },
+    {
+      "filter": "State_selection == null || datum.State == State_selection"
+    }
+  ],
+  "mark": "point",
+  "encoding": {
+    "x": {
+      "field": "Population",
+      "type": "quantitative",
+      "title": "Population (in thousands)"
+    },
+    "y": {
+      "field": "Net Migration",
+      "type": "quantitative",
+      "title": "Net Overseas Migration"
+    },
+    "size": {
+      "field": "Population",
+      "type": "quantitative",
+      "title": "Population Size",
+      "scale": {"range": [30, 300]}
+    },
+    "color": {
+      "field": "State",
+      "type": "nominal",
+      "title": "State"
+    },
+    "tooltip": [
+      {"field": "State", "type": "nominal"},
+      {"field": "Population", "type": "quantitative", "title": "Population (in thousands)"},
+      {"field": "Net Migration", "type": "quantitative", "title": "Net Overseas Migration"}
+    ]
+  }
+}
