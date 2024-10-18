@@ -53,7 +53,7 @@
           "scale": {
             "scheme": "blues"
           },
-          "title": "Population Change (%)"
+          "title": "Population Change"
         },
         "tooltip": [
           {"field": "properties.STE_NAME16", "type": "nominal", "title": "State"},
